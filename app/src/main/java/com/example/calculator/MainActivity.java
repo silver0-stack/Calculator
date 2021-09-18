@@ -8,6 +8,8 @@ import android.annotation.SuppressLint;
 import android.app.UiModeManager;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -133,6 +135,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /*EditText인 inputText를 String 값으로 가져오는 함수*/
+    @NonNull
     private String getInput() {
         return this.inputText.getText().toString();
     }

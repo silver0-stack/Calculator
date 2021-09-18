@@ -7,27 +7,26 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <EditText
-            android:id="@+id/input"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="130dp"
-            android:background="@color/input_backg_color"
-            android:ems="10"
-            android:gravity="right"
-            android:inputType="none"
-            android:paddingTop="50dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/input"
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:ems="10"
+                android:inputType="phone"
+                android:gravity="right"
+                android:background="@android:color/transparent"
+                android:paddingTop="50dp"
             android:textSize="40sp" />
 
         <TextView
             android:id="@+id/result"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:background="@color/input_backg_color"
+            android:layout_height="130dp"
             android:gravity="right"
             android:textSize="20dp" />
 
@@ -37,8 +36,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="right"
-        android:layout_margin="5dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp">
 
         <Switch
             android:id="@+id/toggleBtn"
@@ -58,29 +57,31 @@
             android:layout_gravity="center"
             android:layout_marginStart="300dp"
             android:background="@drawable/ic_backspace_button"
-            app:tint="#46B679"
-            app:srcCompat="@drawable/ic_backspace_button" />
+            app:srcCompat="@drawable/ic_backspace_button"
+            app:tint="#46B679" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="5dp">
 
-            <LinearLayout
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/seven"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/seven"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                android:background="@drawable/number_button"
+                android:backgroundTint="#252323"
                 android:onClick="ClickNumber"
                 android:text="7"
+                android:textColor="@color/input_backg_color"
                 android:textSize="24sp" />
 
             <Button
@@ -88,9 +89,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/number_button"
                 android:onClick="ClickNumber"
                 android:text="8"
+                android:backgroundTint="#252323"
+                android:textColor="@color/input_backg_color"
                 android:textSize="24sp" />
 
             <Button
@@ -98,9 +100,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/number_button"
                 android:onClick="ClickNumber"
                 android:text="9"
+                android:backgroundTint="#252323"
+                android:textColor="@color/input_backg_color"
                 android:textSize="24sp" />
 
             <Button
@@ -108,9 +111,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/operation_button"
                 android:onClick="ClickOperator"
                 android:text="+"
+                android:backgroundTint="#252323"
                 android:textColor="#46B679"
                 android:textSize="24sp" />
 
@@ -120,7 +123,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:onClick="ClickNumber"
             android:orientation="horizontal">
 
             <Button
@@ -128,8 +130,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/number_button"
                 android:onClick="ClickNumber"
+                android:backgroundTint="#252323"
+                android:textColor="@color/input_backg_color"
                 android:text="4"
                 android:textSize="24sp" />
 
@@ -138,8 +141,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/number_button"
                 android:onClick="ClickNumber"
+                android:backgroundTint="#252323"
+                android:textColor="@color/input_backg_color"
                 android:text="5"
                 android:textSize="24sp" />
 
@@ -148,8 +152,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/number_button"
                 android:onClick="ClickNumber"
+                android:backgroundTint="#252323"
+                android:textColor="@color/input_backg_color"
                 android:text="6"
                 android:textSize="24sp" />
 
@@ -158,8 +163,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/operation_button"
                 android:onClick="ClickOperator"
+                android:backgroundTint="#252323"
                 android:text="-"
                 android:textColor="#46B679"
                 android:textSize="24sp" />
@@ -177,9 +182,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/number_button"
                 android:onClick="ClickNumber"
                 android:text="1"
+                android:textColor="@color/input_backg_color"
+                android:backgroundTint="#252323"
                 android:textSize="24sp" />
 
             <Button
@@ -187,9 +193,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/number_button"
                 android:onClick="ClickNumber"
                 android:text="2"
+                android:backgroundTint="#252323"
+                android:textColor="@color/input_backg_color"
                 android:textSize="24sp" />
 
             <Button
@@ -197,9 +204,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/number_button"
                 android:onClick="ClickNumber"
                 android:text="3"
+                android:textColor="@color/input_backg_color"
+                android:backgroundTint="#252323"
                 android:textSize="24sp" />
 
             <Button
@@ -207,9 +215,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/operation_button"
                 android:onClick="ClickOperator"
                 android:text="x"
+                android:backgroundTint="#252323"
                 android:textColor="#46B679"
                 android:textSize="24sp" />
 
@@ -226,7 +234,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/operation_button"
+                android:backgroundTint="#252323"
                 android:onClick="ClearButton"
                 android:text="C"
                 android:textColor="#FF0000"
@@ -237,9 +245,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/number_button"
+                android:backgroundTint="#252323"
                 android:onClick="ClickNumber"
                 android:text="0"
+                android:textColor="@color/input_backg_color"
                 android:textSize="24sp" />
 
             <Button
@@ -247,7 +256,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/operation_button"
+                android:backgroundTint="#252323"
                 android:onClick="ClickOperator"
                 android:text="\u00F7"
                 android:textColor="#46B679"
@@ -258,10 +267,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/equal_button"
-                android:onClick="equalResult"
                 android:text="="
-                android:textColor="@color/equl_text_color"
+                android:backgroundTint="#252323"
+                android:onClick="equalResult"
+                android:textColor="#FFFF00"
                 android:textSize="24sp" />
 
         </LinearLayout>
