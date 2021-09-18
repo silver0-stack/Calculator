@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Calculator</string>
+    <string name="night_mode_off" parent="Theme.AppCompat.DayNight">NIGHT MODE OFF</string>
+    <string name="night_mode_on" parent="Theme.AppCompat.Night">NIGHT MODE ON</string>
+</resources>
