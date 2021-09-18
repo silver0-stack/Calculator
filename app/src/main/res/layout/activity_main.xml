@@ -258,7 +258,7 @@
                 android:layout_weight="1"
                 android:backgroundTint="#252323"
                 android:onClick="ClickOperator"
-                android:text="\u00F7"
+                android:text="÷"
                 android:textColor="#46B679"
                 android:textSize="24sp" />
 

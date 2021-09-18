@@ -17,6 +17,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import net.objecthunter.exp4j.Expression;
 import net.objecthunter.exp4j.ExpressionBuilder;
@@ -77,19 +78,22 @@ public class MainActivity extends AppCompatActivity {
         eight = findViewById(R.id.eight);
         nine = findViewById(R.id.nine);
 
-        checkNightModeActivated();
+        checkNightModeActivated(); //다크모드 활성화됐는지 확인하는 함수
         toggleBtn.setOnCheckedChangeListener((compoundButton, b) -> {
-            if (b) {//when switching to darkmode
+            if (b) {//다크모드로 전환할때
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
                 saveNightModeState(true);
-            } else {//when switching to daymode
+            } else {//라이트모드로 전환할때
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
                 saveNightModeState(false);
             }
             recreate();
         });
 
-        back.setOnClickListener(view -> deleteNumber()); //back setOnClickListener
+        multiply.setOnClickListener(view -> {
+            display += 'x';
+        });
+        back.setOnClickListener(view -> deleteNumber());
     }
 
 
@@ -115,6 +119,13 @@ public class MainActivity extends AppCompatActivity {
     public void ClickOperator(View v) {
         Button button = (Button) v;
         display += button.getText(); //연산자 텍스트를 display에 누적
+
+        if (button.getText().equals("÷")) {
+            Toast.makeText(this.getApplicationContext(),"나누기 기호 클릭됨", Toast.LENGTH_SHORT).show();
+            display=button.getText().toString();
+        }
+
+
         /*입력이 연산자로 끝난다면*/
         if (endsWithOperator()) {
             replace(display);
@@ -126,14 +137,14 @@ public class MainActivity extends AppCompatActivity {
         display = ""; //안지워주면 연산자가 두 번 입력됨..
     }
 
-    /*???*/
+    /*대체하는 함수??*/
     private void replace(String display) {
         inputText.getText().replace(getInput().length() - 1, getInput().length(), display);
     }
 
     /*  + /- /* /÷ /x 로끝난다면  */
     private boolean endsWithOperator() {
-        return getInput().endsWith("+") || getInput().endsWith("-") || getInput().endsWith("\u00F7") || getInput().endsWith("x");
+        return getInput().endsWith("+") || getInput().endsWith("-") || getInput().endsWith("÷") || getInput().endsWith("x");
     }
 
     /*EditText인 inputText를 String 값으로 가져오는 함수*/
@@ -142,6 +153,7 @@ public class MainActivity extends AppCompatActivity {
         return this.inputText.getText().toString();
     }
 
+    /*토글 on/off 여부에 따라서 다크모드 적용하는 boolean 함수*/
     private void saveNightModeState(boolean nightmode) {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putBoolean(KEY_ISNIGHTMODE, nightmode);
@@ -149,6 +161,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    /*nightmode인지 확인하는 함수*/
     public void checkNightModeActivated() {
         if (sharedPreferences.getBoolean(KEY_ISNIGHTMODE, false)) {
             toggleBtn.setChecked(true);
@@ -170,15 +183,15 @@ public class MainActivity extends AppCompatActivity {
                 input = input.replaceAll("x", "*"); //'*'로 모두 대체
             }
             /* 입력에 ÷가 포함된다면 */
-            if (input.contains("\u00F7")) {
-                input = input.replaceAll("\u00F7", "/"); // '/'로 모두 대체
+            if (input.contains("÷")) {
+                input = input.replaceAll("÷", "/"); // '/'로 모두 대체
             }
 
             Expression expression = new ExpressionBuilder(input).build(); //input을 표현식에 넣고 빌드하기
-            double result=expression.evaluate(); //표현식 계산
-            //여기서 소수점 반올림해서 정수로 반환하기
+            double result = expression.evaluate(); //표현식 계산
+            int intResult = (int) Math.round(result); //실수 결과값 반올림해서 정수로 변환
 
-            displayText.setText(String.valueOf(result)); //계산결과 텍스트화해서 결과텍스트에 반영
+            displayText.setText(String.valueOf(intResult)); //계산결과 텍스트화해서 결과텍스트에 반영
 
         } else displayText.setText(""); //입력이 연산자로 끝났다면 결과텍스트 비우기
     }
