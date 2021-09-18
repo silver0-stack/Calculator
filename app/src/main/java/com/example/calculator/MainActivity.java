@@ -18,6 +18,9 @@ import android.widget.ImageButton;
 import android.widget.Switch;
 import android.widget.TextView;
 
+import net.objecthunter.exp4j.Expression;
+import net.objecthunter.exp4j.ExpressionBuilder;
+
 public class MainActivity extends AppCompatActivity {
     public UiModeManager uiModeManager;
     public static final String MyPREFERENCES = "nightModePrefs";
@@ -90,7 +93,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    
     /*back 버튼 클릭시 호출되는 함수*/
     private void deleteNumber() {
         this.inputText.getText().delete(getInput().length() - 1, getInput().length());
@@ -121,7 +123,7 @@ public class MainActivity extends AppCompatActivity {
         else {
             appendToLast(display);
         }
-
+        display = ""; //안지워주면 연산자가 두 번 입력됨..
     }
 
     /*???*/
@@ -157,47 +159,30 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    //    /* = 클릭 시 호출되는 함수 */
-//    public void equalResult(View v){
-//        String input=getInput();
-//
-//        /*입력이 숫자로 끝났다면*/
-//        if(!endsWithOperator()){
-//            /*입력에 x가 포함된다면*/
-//            if(input.contains("x")){
-//                input=input.replaceAll("x","*"); //'*'로 모두 대체
-//            }
-//            /*입력에 ÷가 포함된다면*/
-//            if(input.contains("\u00F7")){
-//                input=input.replaceAll("\u00F7","/"); // '/'로 모두 대체
-//            }
-//
-//            XPathExpression expression=new XPathExpressionBuilder(input).build();
-//        }
-//        else
-//    }
-//
-//
+    /* = 클릭 시 호출되는 함수 */
+    public void equalResult(View v) {
+        String input = getInput();
 
-    public void equalResult(View view) {
-        String v1="", v2="";
-        String op = "";
+        /*입력이 숫자로 끝났다면*/
         if (!endsWithOperator()) {
-            /*계산결과를 결과텍스트에 반영*/
-            switch (op) {
-                case "+":
-                    displayText.setText(String.valueOf(Double.parseDouble(v1) + Double.parseDouble(v2)));
-                case "-":
-                    displayText.setText(String.valueOf(Double.parseDouble(v1) - Double.parseDouble(v2)));
-                case "x":
-                    displayText.setText(String.valueOf(Double.parseDouble(v1) * Double.parseDouble(v2)));
-                case "\u00F7":
-                    displayText.setText(String.valueOf(Double.parseDouble(v1) / Double.parseDouble(v2)));
-                default:
+            /*입력에 x가 포함된다면*/
+            if (input.contains("x")) {
+                input = input.replaceAll("x", "*"); //'*'로 모두 대체
             }
-        } else displayText.setText(""); //입력이 연산자로 끝났다면 결과텍스트 비우기
+            /* 입력에 ÷가 포함된다면 */
+            if (input.contains("\u00F7")) {
+                input = input.replaceAll("\u00F7", "/"); // '/'로 모두 대체
+            }
 
+            Expression expression = new ExpressionBuilder(input).build(); //input을 표현식에 넣고 빌드하기
+            double result=expression.evaluate(); //표현식 계산
+            //여기서 소수점 반올림해서 정수로 반환하기
+
+            displayText.setText(String.valueOf(result)); //계산결과 텍스트화해서 결과텍스트에 반영
+
+        } else displayText.setText(""); //입력이 연산자로 끝났다면 결과텍스트 비우기
     }
+
 
     /*C 버튼 클릭 시 호출되는 함수*/
     public void ClearButton(View view) {
