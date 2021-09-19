@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     public static final String KEY_ISNIGHTMODE = "isNightMode";
     @SuppressLint("UseSwitchCompatOrMaterialCode")
     public Switch toggleBtn; //다크모드 토글 버튼 변수 선언
-    private String display = ""; //결과텍스트 String 변수 선언
+    private String display = ""; //입력텍스트 String 변수 선언
     private EditText inputText; //입력텍스트 변수 선언
     private TextView displayText; //결과텍스트 변수 선언
     public Button clear; //모두 지우는 버튼 변수 선언
@@ -90,9 +90,6 @@ public class MainActivity extends AppCompatActivity {
             recreate();
         });
 
-        multiply.setOnClickListener(view -> {
-            display += 'x';
-        });
         back.setOnClickListener(view -> deleteNumber());
     }
 
@@ -118,14 +115,14 @@ public class MainActivity extends AppCompatActivity {
     /*연산자 출력 시 호출되는 함수*/
     public void ClickOperator(View v) {
         Button button = (Button) v;
-        display += button.getText(); //연산자 텍스트를 display에 누적
+        display += button.getText().toString(); //연산자 텍스트를 display 에 누적
 
-        if (button.getText().equals("÷")) {
-            Toast.makeText(this.getApplicationContext(),"나누기 기호 클릭됨", Toast.LENGTH_SHORT).show();
-            display=button.getText().toString();
+        if (button.getText().equals("x")) {
+            display+="*";
         }
-
-
+        if (button.getText().equals("÷")) {
+            display+="/";
+        }
         /*입력이 연산자로 끝난다면*/
         if (endsWithOperator()) {
             replace(display);
@@ -144,7 +141,7 @@ public class MainActivity extends AppCompatActivity {
 
     /*  + /- /* /÷ /x 로끝난다면  */
     private boolean endsWithOperator() {
-        return getInput().endsWith("+") || getInput().endsWith("-") || getInput().endsWith("÷") || getInput().endsWith("x");
+        return getInput().endsWith("+") || getInput().endsWith("-") || getInput().endsWith("\\u00F7") || getInput().endsWith("x");
     }
 
     /*EditText인 inputText를 String 값으로 가져오는 함수*/
@@ -182,9 +179,9 @@ public class MainActivity extends AppCompatActivity {
             if (input.contains("x")) {
                 input = input.replaceAll("x", "*"); //'*'로 모두 대체
             }
-            /* 입력에 ÷가 포함된다면 */
-            if (input.contains("÷")) {
-                input = input.replaceAll("÷", "/"); // '/'로 모두 대체
+            /* 입력에 \u00F7가 포함된다면 */
+            if (input.contains("\\u00F7")) {
+                input = input.replaceAll("\\u00F7", "/"); // '/'로 모두 대체
             }
 
             Expression expression = new ExpressionBuilder(input).build(); //input을 표현식에 넣고 빌드하기
