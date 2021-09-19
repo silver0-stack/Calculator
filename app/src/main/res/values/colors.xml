@@ -8,5 +8,6 @@
     <color name="main_backg_color">#ffffff</color>
     <color name="input_backg_color">#ffffff</color>
     <color name="darkmoode">#404040</color>
+    <color name="status_bar_dark">#292828</color>
 </resources>
 

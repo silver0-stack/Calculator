@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/status_bar_dark"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="250dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="95dp"
+            android:layout_height="80dp"
+            android:layout_marginLeft="63dp"
+            android:src="@drawable/calculator_1" />
+
+        <ImageView
+            android:layout_width="95dp"
+            android:layout_height="80dp"
+            android:src="@drawable/calculator_1" />
+
+        <ImageView
+            android:layout_width="95dp"
+            android:layout_height="80dp"
+            android:src="@drawable/calculator_1" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/cafe24_ssurroundair"
+            android:text="나만의"
+            android:textColor="@color/input_backg_color"
+            android:textSize="100dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/cafe24_ssurroundair"
+            android:text="계산기"
+            android:textColor="@color/input_backg_color"
+            android:textSize="100dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="95dp"
+            android:layout_height="80dp"
+            android:layout_marginLeft="63dp"
+            android:src="@drawable/calculator_1" />
+
+        <ImageView
+            android:layout_width="95dp"
+            android:layout_height="80dp"
+            android:src="@drawable/calculator_1" />
+
+        <ImageView
+            android:layout_width="95dp"
+            android:layout_height="80dp"
+            android:src="@drawable/calculator_1" />
+    </LinearLayout>
+
+
+</LinearLayout>
